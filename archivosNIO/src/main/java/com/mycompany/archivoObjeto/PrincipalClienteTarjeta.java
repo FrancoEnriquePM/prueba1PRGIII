@@ -25,7 +25,8 @@ public class PrincipalClienteTarjeta {
             System.out.println("4. Mostrar Datos");
             System.out.println("5. Bloquear Tarjeta");
             System.out.println("6. Depositar Dinero");
-            System.out.println("7. Salir");
+            System.out.println("7. Retirar Dinero");
+            System.out.println("8. Salir");
             System.out.println("DIGITE UNA OPCION");
             opc=leer.nextInt();
             switch(opc){
@@ -59,9 +60,18 @@ public class PrincipalClienteTarjeta {
                     obj.leerClientes();
                     System.out.println("Digite el numero de cedula del Cliente");
                     int ced=leer.nextInt();
-                    System.out.println("Digite el monto de que desea depositar");
+                    System.out.println("Digite el monto de que desea retirar");
                     double m=leer.nextDouble();
                     obj.depositar(ced, m);
+                    obj.guardarObjetos();
+                    break;
+                case 7:
+                    obj.leerClientes();
+                    System.out.println("Digite el numero de cedula del Cliente");
+                    int cedu=leer.nextInt();
+                    System.out.println("Digite el monto de que desea depositar");
+                    double mon=leer.nextDouble();
+                    obj.retiro(cedu, mon);
                     obj.guardarObjetos();
                     break;
                 default:
