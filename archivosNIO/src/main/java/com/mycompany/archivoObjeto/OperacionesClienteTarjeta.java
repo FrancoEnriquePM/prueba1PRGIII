@@ -110,6 +110,30 @@ public class OperacionesClienteTarjeta {
             }
         }
     }
+    //Realizando el retiro de un monto de dinero a la cuenta
+    public void retiro(int cedula, double monto)
+    {
+        int sw=0;
+        if(listaCliente!=null){
+            for(Cliente cliente:listaCliente){
+                if(cliente.getCedula()==cedula){
+                    sw=1;
+                    if(cliente.getTarjeta().getEstado().equals("ACTIVO")){
+                        double saldo=cliente.getTarjeta().getSaldo();
+                        saldo=saldo-monto;
+                        cliente.getTarjeta().setSaldo(saldo);
+                        System.out.println("Retiro exitoso..>!");
+                    }else{
+                        System.out.println("La tarjeta esta bloqueada");
+                        System.out.println("Comuniquese con el Banco..>!!");
+                    }
+                }
+            }
+            if(sw==0){
+                System.out.println("El cliente no esta registrado");
+            }
+        }
+    } 
     //Creando un archivo
     public void crearArchivo()
     {
